@@ -6,7 +6,13 @@ Node js API RESTful
 - npm
 
 ## Available Scripts
-### `npm run dev`
+### `1. npm install`
+
+Run to install all the project dependencies
+
+Ejecuta para instalar las dependencias del proyecto
+
+### `2. npm run dev`
 
 Run the NodeJs local server on [http://localhost:3000](http://localhost:3000)
 
