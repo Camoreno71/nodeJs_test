@@ -1,11 +1,10 @@
 import express from "express";
 import fs from 'fs'
-import bodyParser from "body-parser"
 import Joi from "@hapi/joi"
 
 const app = express()
 // This bodyParser is to accept json body in http request
-app.use(bodyParser)
+app.use(express.json())
 
 // Task schema
 const taskScheme = Joi.object({
@@ -24,7 +23,7 @@ const readData = () => {
 }
 
 // Function to write the json db data
-const writeDate = (data) => {
+const writeData = (data) => {
   try {
     fs.writeFileSync("./db.json", JSON.stringify(data)
     )
@@ -41,9 +40,17 @@ app.get("/task", (req, res) => {
 app.post("/task", (req, res)  => {
   const data = readData()
   const body = req.body
-  const newTask = {
-
+  const { error } = taskScheme.validate(body);
+  if (error) {
+    res.status(400).send(error.details[0].message)
   }
+  const newTask = {
+    id: data.task.length +1,
+    ...body
+  }
+  data.task.push(newTask)
+  writeData(data)
+  res.status(201).send(newTask)
 })
 
 app.listen(3000, () => console.log("Server listening on port 3000"))

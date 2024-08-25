@@ -1,3 +1,9 @@
 {
-  "task": {}
+  "task": [
+    {
+      "id": 1,
+      "name": "Tarea matematicas",
+      "description": "Hacer 20 ejercicios"
+    }
+  ]
 }
