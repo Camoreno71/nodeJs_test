@@ -1,6 +1,10 @@
 # Interrapidismo Node js test
 Node js API RESTful
 
+# Requeriments
+- NodeJs
+- npm
+
 ## Available Scripts
 ### `npm run dev`
 
