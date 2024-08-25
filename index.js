@@ -12,6 +12,11 @@ const taskScheme = Joi.object({
   description: Joi.string().required()
 })
 
+const taskEditScheme = Joi.object({
+  name: Joi.string(),
+  description: Joi.string()
+})
+
 // function to read the data in json db
 const readData = () => {
   try {
@@ -37,20 +42,39 @@ app.get("/task", (req, res) => {
   res.json(data.task)
 })
 
-app.post("/task", (req, res)  => {
+app.post("/task", (req, res) => {
   const data = readData()
   const body = req.body
   const { error } = taskScheme.validate(body);
   if (error) {
     res.status(400).send(error.details[0].message)
+  } else {
+    const newTask = {
+      id: data.task.length + 1,
+      ...body
+    }
+    data.task.push(newTask)
+    writeData(data)
+    res.status(201).send(newTask)
   }
-  const newTask = {
-    id: data.task.length +1,
-    ...body
+})
+
+app.put("/task/:id", (req, res) => {
+  const data = readData()
+  const body = req.body
+  const { error } = taskEditScheme.validate(body);
+  if (error) {
+    res.status(400).send(error.details[0].message)
+  }else {
+    const id = parseInt(req.params.id)
+    const taskIndex = data.task.findIndex((task) => task.id === id)
+    data.task[taskIndex] = {
+      ...data.task[taskIndex],
+      ...body
+    }
+    writeData(data)
+    res.status(200).send(data.task[taskIndex])
   }
-  data.task.push(newTask)
-  writeData(data)
-  res.status(201).send(newTask)
 })
 
 app.listen(3000, () => console.log("Server listening on port 3000"))
