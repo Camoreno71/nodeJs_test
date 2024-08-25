@@ -7,7 +7,11 @@ const app = express()
 // This bodyParser is to accept json body in http request
 app.use(bodyParser)
 
-
+// Task schema
+const taskScheme = Joi.object({
+  name: Joi.string().required(),
+  description: Joi.string().required()
+})
 
 // function to read the data in json db
 const readData = () => {
