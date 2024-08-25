@@ -1,10 +1,6 @@
 # Interrapidismo Node js test
 Node js API RESTful
 
-# Getting Started
-This project was bootstrapped with npm.\
-Este proyecto fue iniciado con npm
-
 ## Available Scripts
 ### `npm run dev`
 
