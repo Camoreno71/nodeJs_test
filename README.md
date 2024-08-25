@@ -1,18 +1,22 @@
-# Interrapidismo Node js test
-Node js API RESTful
+# Interrapidismo assesment
+insterrapidisimo React native and NodeJs assesment
 
-# Requeriments
+# React Native test
+
+# NodeJs test
+
+## Requeriments
 - NodeJs
 - npm
 
-## Available Scripts
-### `1. npm install`
+### Available Scripts
+#### `1. npm install`
 
 Run to install all the project dependencies
 
 Ejecuta para instalar las dependencias del proyecto
 
-### `2. npm run dev`
+#### `2. npm run dev`
 
 Run the NodeJs local server on [http://localhost:3000](http://localhost:3000)
 
@@ -21,7 +25,7 @@ Ejecute el servidor local de NodeJs en [http://localhost:3000](http://localhost:
 You can use Postman to test the endpoints.\
 Puedes utilizar Postman para probar los servicios.
 
-## Endpoints
+### Endpoints
 
 GET [http://localhost:3000/task](http://localhost:3000/task)
 
