@@ -83,7 +83,7 @@ app.delete("/task/:id", (req, res) => {
   const taskIndex = data.task.findIndex((task) => task.id === id)
   data.task.splice(taskIndex, 1)
   writeData(data)
-  res.json({message: "Task deleted successfully"})
+  res.json({ message: "Task deleted successfully" })
 })
 
 app.listen(3000, () => console.log("Server listening on port 3000"))
