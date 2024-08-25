@@ -65,7 +65,7 @@ app.put("/task/:id", (req, res) => {
   const { error } = taskEditScheme.validate(body);
   if (error) {
     res.status(400).send(error.details[0].message)
-  }else {
+  } else {
     const id = parseInt(req.params.id)
     const taskIndex = data.task.findIndex((task) => task.id === id)
     data.task[taskIndex] = {
