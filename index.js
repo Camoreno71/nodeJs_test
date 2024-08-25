@@ -77,4 +77,13 @@ app.put("/task/:id", (req, res) => {
   }
 })
 
+app.delete("/task/:id", (req, res) => {
+  const data = readData()
+  const id = parseInt(req.params.id)
+  const taskIndex = data.task.findIndex((task) => task.id === id)
+  data.task.splice(taskIndex, 1)
+  writeData(data)
+  res.json({message: "Task deleted successfully"})
+})
+
 app.listen(3000, () => console.log("Server listening on port 3000"))
